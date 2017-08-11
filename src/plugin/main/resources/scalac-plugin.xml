@@ -1,0 +1,4 @@
+<plugin>
+    <name>divbyzerocheck</name>
+    <classname>DivByZeroCheckPlugin</classname>
+</plugin>
