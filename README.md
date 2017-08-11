@@ -30,16 +30,13 @@ libraryDependencies += "org.scala-lang" % "scala-compiler" % "2.12.3"
 ```
 
 メモ
-- コンパイラ・プラグインAPIは`scala-compiler`というプロジェクトに入っている(※v2.12.3時点)
 - `scala-compiler`はScalaのプロジェクトの一つだけど、デフォルトではScalaに同梱されない(※v2.12.3時点)
 
 ## ${compiler-plugin}.jarの作成
-`compiler-plugin`というprojectのjarを作る
+作成したプラグインのjarを作る
 
 ```sbt
-// sbtは起動している前提
-> project compiler-plugin
-> package
+> sbt compiler-plugin/package
 ```
 
 メモ
@@ -55,19 +52,17 @@ libraryDependencies += "org.scala-lang" % "scala-compiler" % "2.12.3"
 ```
 
 ## プラグインを使う（コンパイルする）
-`compiler-plugin-client`にコードを書いてコンパイルする
+`compiler-plugin-client`でコンパイルする
 
 ```sbt
-// sbtは起動している前提
-> project compiler-plugin-client
-> compile
+> sbt compiler-plugin-client/compile
 ```
 
 メモ
 - コンパイルするだけなのは、すでに作成したjarをscalacのオプション指定するなどbuild.sbtに設定しているため
 
 ## Example:ゼロ除算のコンパイルエラー
-冒頭のドキュメントにある通り、ゼロ除算をコンパイルエラーにしてみる　　
+冒頭のドキュメントにある通り、ゼロ除算をコンパイルエラーにしてみる  
 コンパイルすると以下のようなエラーが出る(pathは適当にしている)
 
 ```sbt
